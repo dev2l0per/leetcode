@@ -11,7 +11,6 @@ class Solution:
             for colIndex in range(1, rowIndex):
                 dp[rowIndex][colIndex] = min(dp[rowIndex - 1][colIndex - 1] + triangle[rowIndex][colIndex], dp[rowIndex - 1][colIndex] + triangle[rowIndex][colIndex])
             dp[rowIndex][rowIndex] = dp[rowIndex - 1][rowIndex - 1] + triangle[rowIndex][rowIndex]
-            print(dp)
 
         return min(dp[-1])
 
