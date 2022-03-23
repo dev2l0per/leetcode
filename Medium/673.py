@@ -7,7 +7,6 @@ class Solution:
         
         for i in range(len(nums)):
             dp[i] = 1
-            lengthOfSubsequence = 1
             for j in range(i):
                 if nums[j] < nums[i]:
                     if dp[j] == dp[i]:
