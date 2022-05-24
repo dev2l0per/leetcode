@@ -1,0 +1,32 @@
+from typing import Dict, List
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if len(digits) == 0:
+            return []
+        
+        letters: Dict[str, str] = {
+            '2': "abc",
+            '3': "def",
+            '4': "ghi",
+            '5': "jkl",
+            '6': "mno",
+            '7': "pqrs",
+            '8': "tuv",
+            '9': "wxyz"
+        }
+
+        result: List[str] = []
+
+        def backtrack(arr: List[str], startIndex: int) -> None:
+            if len(arr) == len(digits):
+                result.append(''.join(arr))
+                return
+            for i in range(startIndex, len(digits)):
+                for ch in letters[digits[i]]:
+                    arr.append(ch)
+                    backtrack(arr, i + 1)
+                    arr.pop()
+        
+        backtrack([], 0)
+        return result
